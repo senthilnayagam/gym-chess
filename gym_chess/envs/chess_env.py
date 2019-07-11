@@ -1,6 +1,6 @@
 import gym
 from gym import error, spaces, utils
-from gym.utils import seeding
+#from gym.utils import seeding
 
 import numpy as np
 
@@ -33,7 +33,7 @@ class ChessEnv(gym.Env):
             '5': 0.1   # Promotion to queen
         }
 
-    def _step(self, action):
+    def step(self, action):
         """
         input: action in UCI format (i.e. 'a2a4')
 
@@ -93,7 +93,7 @@ class ChessEnv(gym.Env):
         self.env.set_fen(fen)
         return self._get_array_state()
 
-    def _reset(self):
+    def reset(self):
         """
         :return: current state as numpy array
         """
@@ -102,7 +102,7 @@ class ChessEnv(gym.Env):
         state = self._get_array_state()
         return state
 
-    def _render(self, mode='human', close=False):
+    def render(self, mode='human', close=False):
         print(self.env)
 
     def _get_legal_move_list(self):
